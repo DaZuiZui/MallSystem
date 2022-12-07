@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import AdminIndex from '@/components/view/admin/AdminIndex'
 import AdminTop from '@/components/view/frame/Top'
+import UserLogin    from '@/components/view/user/Login'
+
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +27,12 @@ export default new Router({
       path: '/admin/Top',
       name: 'adminTop',
       component: AdminTop
+    },
+    //登入
+    {
+      path: '/user/login',
+      name: 'userlogin',
+      component: UserLogin
     },
   ]
 })
