@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import AdminIndex from '@/components/view/admin/AdminIndex'
 import AdminTop from '@/components/view/frame/Top'
 import UserLogin    from '@/components/view/user/Login'
+import UserReg from '@/components/view/user/Regiter'
 
 Vue.use(Router)
 
@@ -33,6 +34,12 @@ export default new Router({
       path: '/user/login',
       name: 'userlogin',
       component: UserLogin
+    },
+    //注册
+    {
+      path: '/user/reg',
+      name: 'userreg',
+      component: UserReg
     },
   ]
 })
