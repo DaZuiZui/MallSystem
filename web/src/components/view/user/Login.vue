@@ -42,8 +42,17 @@
     methods: {
         //用户登入
         async userLogin(){
-           var obj = await synRequestPost("/user/login?username=root&password=admin");
-           console.log(obj);
+           var obj = await synRequestPost("/user/login?username="+this.username+"&password="+this.password);
+           console.log(obj[0]);
+           if(obj.length == 0){
+              alert("账号或者密码不正确");
+           }else{
+              this.$store.dispatch('setUser',obj[0]);
+              alert("登入成功");
+              //console.log("todo11"+this.$store.state.user.id);
+           }
+           console.log(obj.length);
+            
         }
     },
   }
