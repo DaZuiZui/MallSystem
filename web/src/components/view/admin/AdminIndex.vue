@@ -19,10 +19,8 @@
         
       </div></el-col>
       
-      
       <el-col :span="12"><div class="grid-content bg-purple">
-          asd
-
+          主页
       </div></el-col>
     </el-row>  
   </div>
