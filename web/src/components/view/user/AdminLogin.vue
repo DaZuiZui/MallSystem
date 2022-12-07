@@ -56,6 +56,9 @@
            }else{
               this.$store.dispatch('setUser',obj[0]);
               alert("登入成功");
+              setCookie("id",obj[0].id);
+              setCookie("username",obj[0].username);
+              setCookie("password",obj[0].password);
               window.location.href="http://127.0.0.1:8080/admin/adminIndex";
            }
 

@@ -21,16 +21,30 @@
         data() {
         return {
           activeIndex: '1',
-          activeIndex2: '1'
+          activeIndex2: '1',
+          username: "",
+          password: ""
         };
       },
+
+      mounted(){
+          this.check();
+      },
+
       methods: {
         handleSelect(key, keyPath) {
           console.log(key, keyPath);
+        },
+        //确认是否为管理员
+        async check(){
+          var obj = await synRequestPost("/admin/login?username="+this.username+"&password="+this.password);
+           console.log(obj[0]);
+           if(obj.length == 0){
+              alert("您不是管理员身份");
+           }else{
+           }
         }
       }
-    
-      
     }
   </script>
     
