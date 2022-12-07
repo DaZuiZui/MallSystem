@@ -12,7 +12,7 @@
             <label>密码</label>
           </div>
  
-          <a @click="userLogin">
+          <a @click="userReg">
             <span></span>
             <span></span>
             <span></span>
@@ -20,7 +20,7 @@
             注册
           </a>
  
-          <a @click="signUp_asd">已有账户 </a>
+          <a @click="goLogin">已有账户 </a>
         </form>
       </div>
     </div>
@@ -38,20 +38,17 @@
       }
     },
 
-    methods: {
+    methods: {        
+        //前网login页面
+        goLogin(){
+    
+          window.location.href="http://127.0.0.1:8080/h/user/login";
+        },
         //用户登入
         async userReg(){
            var obj = await synRequestPost("/user/reg?username="+this.username+"&password="+this.password);
-           console.log(obj[0]);
-           if(obj.length == 0){
-              alert("账号或者密码不正确");
-           }else{
-              this.$store.dispatch('setUser',obj[0]);
-              alert("登入成功");
-              //console.log("todo11"+this.$store.state.user.id);
-           }
-           console.log(obj.length);
-            
+           console.log(obj);
+           alert(obj);
         }
     },
   }

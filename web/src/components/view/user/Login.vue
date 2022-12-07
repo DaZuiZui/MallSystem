@@ -20,8 +20,8 @@
             登录
           </a>
  
-          <a @click="signUp_asd">管理员登入 </a>
-          <a @click="signUp_asd">注册 </a>
+          <a @click="goAdminLogin">管理员登入 </a>
+          <a @click="goReg">注册 </a>
         </form>
       </div>
     </div>
@@ -40,6 +40,14 @@
     },
 
     methods: {
+        //前网注册页面
+        goReg(){
+          this.$router.push('/user/reg');
+        },
+        //前网注册页面
+        goAdminLogin(){
+          this.$router.push('/admin/login');
+        },
         //用户登入
         async userLogin(){
            var obj = await synRequestPost("/user/login?username="+this.username+"&password="+this.password);

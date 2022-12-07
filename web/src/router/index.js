@@ -5,6 +5,7 @@ import AdminIndex from '@/components/view/admin/AdminIndex'
 import AdminTop from '@/components/view/frame/Top'
 import UserLogin    from '@/components/view/user/Login'
 import UserReg from '@/components/view/user/Regiter'
+import AdminLogin from '@/components/view/user/AdminLogin'
 
 Vue.use(Router)
 
@@ -41,5 +42,11 @@ export default new Router({
       name: 'userreg',
       component: UserReg
     },
+    //管理员登入
+    {
+      path: '/admin/login',
+      name: 'adminlogin',
+      component: AdminLogin
+    }
   ]
 })

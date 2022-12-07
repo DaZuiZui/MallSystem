@@ -25,6 +25,25 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 管理员登入
+ */
+ router.post('/admin/login',(req,res) =>{
+  let username = req.query.username;
+  let password = req.query.password;
+
+  let sql = "SELECT *from user where username = '"+username +"' and password = '"+password+"' and role = 1";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+  
+    console.log('returna:', rows);
+    res.send(rows);
+  })  
+  return ;
+})
+
+
+
+/**
  * 用户登入
  */
 router.post('/user/login',(req,res) =>{
@@ -38,7 +57,36 @@ router.post('/user/login',(req,res) =>{
     console.log('returna:', rows);
     res.send(rows);
   })  
+  return ;
 })
  
+/**
+ * 用户注册
+ */
+ router.post('/user/reg',(req,res) =>{
+  let username = req.query.username;
+  let password = req.query.password;
+  var ans = "";
+  //查询账号是否唯一
+  let sql = "SELECT *from user where username = '"+username +"'";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    console.log(rows);
+    if(rows.length > 0){
+      res.send("注册失败，该账户已经存在！");
+   
+    }else{
+  //写入mysql
+      sql = "insert into user value(null,'"+username +"','"+password+"',3)";
+      connection.query(sql, (err, rows, fields) => {
+        if (err) throw err
+      
+        console.log('returna:', rows);
+        //ans ="注册成功";
+        res.send("注册成功");
+      })  
+    }
+  })  
+})
 
 module.exports = router;
