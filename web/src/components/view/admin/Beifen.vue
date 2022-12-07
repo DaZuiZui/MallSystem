@@ -16,13 +16,10 @@
             <div>
               <Left></Left>
             </div>
-          
         </div></el-col>
-        
         
         <el-col :span="12"><div class="grid-content bg-purple">
             asd
-  
         </div></el-col>
       </el-row>  
     </div>

@@ -1,15 +1,21 @@
-# 商城系统
-    基于Vue+node.js实现的商城系统，该系统含用户模块和管理模块
-## 用户模块
-### 用户登入
-        用户登入分为管理员登入和用户登入，如果是用户登入则跳转用户板块，如果是管理员登入则跳转管理员板块
-### 用户注册
-        用户注册包含普通用户注册和管理员账户注册，管理员账号注册只为root权限提供，只有root可以注册管理员
-## 管理模块
+# web
 
-###  个人中心
-    该模块实现了，个人信息查询和修改密码
-### 商品分类管理
-    该模版实现了商品分类管理管理
-### 商品信息管理
-    该模版实现了商品信息管理
+> A Vue.js project
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
