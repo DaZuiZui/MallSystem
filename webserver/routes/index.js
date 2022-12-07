@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 /**
  * 用户登入
  */
-router.get('/user/login',(req,res) =>{
+router.post('/user/login',(req,res) =>{
   let username = req.query.username;
   let password = req.query.password;
 

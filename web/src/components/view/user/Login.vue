@@ -12,7 +12,7 @@
             <label>密码</label>
           </div>
  
-          <a @click="handleSubmit">
+          <a @click="userLogin">
             <span></span>
             <span></span>
             <span></span>
@@ -28,6 +28,7 @@
   </template>
   
   <script>
+  import {synRequestPost} from "../../../../static/request"
   export default {
     name: "Login",
     data() {
@@ -39,7 +40,11 @@
     },
 
     methods: {
-        
+        //用户登入
+        async userLogin(){
+           var obj = await synRequestPost("/user/login?username=root&password=admin");
+           console.log(obj);
+        }
     },
   }
   ;
@@ -47,7 +52,7 @@
   
   <style>
   body {
-    background-image: url(https://img-blog.csdnimg.cn/a7d3536782d34024914b76d3eafbe637.jpg);
+    background-image: url(../../../../static/a7d3536782d34024914b76d3eafbe637.jpeg);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 0px -50px;
