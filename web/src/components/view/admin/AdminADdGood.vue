@@ -108,6 +108,10 @@
                 await synRequestPost(str);
                 alert("添加成功");
             },
+
+            goupdate(){
+              
+            }
             
         }
     
