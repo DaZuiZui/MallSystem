@@ -30,9 +30,9 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">标题</th>
-                    <th scope="col">图片</th>
-                    <th scope="col">发布时间</th>
+                    <th scope="col">主键</th>
+                    <th scope="col">昵称</th>
+                    <th scope="col">密码</th>
                     <th scope="col">操作</th>
                   </tr>
                 </thead>
@@ -42,16 +42,14 @@
                         &nbsp; &nbsp; &nbsp; 
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="obj.id"  v-model="arr">
                     </th>
-                    <td>{{obj.name}}</td>
+                    <td>{{obj.id}}</td>
 
                     <td>
-                        <div class="block" style="width:60px;height:60px">
-                            <el-image :src="obj.ima_url"></el-image>
-                          </div>
+                        {{obj.username}}
                     </td>
 
                     <td> 
-                        {{obj.create_time}}
+                        {{obj.password}}
                     </td>
                     <td>
                         <button type="button" class="btn btn-success" @click="goupdate(obj.id)">修改</button>
@@ -90,14 +88,14 @@ import { async } from "q";
         methods: {
           //添加商品信息  
           addGoodInfo(){
-            this.$router.push('/admin/addactivity');
+            this.$router.push('/user/reg');
           },
       
           /**
            *  查看所有商品信息 
            */
           async queryallGood(){
-              this.list = await synRequestPost("/getActivityAll");
+              this.list = await synRequestPost("/getalluser");
  
           },
 
@@ -109,20 +107,19 @@ import { async } from "q";
            *  修改页面
            */
           goupdate(id){
-      
-            this.$router.push('/admin/UpdateActivity?id='+id);
+            this.$router.push('/user/update?id='+id);
           },
 
           /**
            *  批量删除
            */ 
           async deleteall(){
-            await synRequestPost("/admin/activity/delall?arr="+this.arr);
+            await synRequestPost("/admin/user/delall?arr="+this.arr);
             alert("删除成功");
             this.queryallGood();
           },
           async delById(id){
-            await synRequestPost("/admin/activity/byid?aid="+id);
+            await synRequestPost("/admin/user/byid?aid="+id);
             alert("删除成功");
             this.queryallGood();
           }

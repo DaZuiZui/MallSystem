@@ -36,6 +36,71 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 修改用户
+ */
+ router.post('/admin/user/update', function(req, res, next) {
+  let aid = req.query.aid;
+  let password = req.query.password;
+  let sql = "update user set password = '"+password+"'  where id ="+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("修改成功");
+  }) 
+});
+
+/**
+ * 通过id查询user
+ */
+ router.post('/user/qbyid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "select * from user where id = "+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ * 用户单独删除活动信息
+ */
+ router.post('/admin/user/byid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "delete from user where id = "+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("删除成功");
+  }) 
+});
+
+/*
+ * 用户批量删除信息
+ */
+router.post('/admin/user/delall', function(req, res, next) {
+  let arr = req.query.arr;
+  console.log(arr);
+  let sql = "delete from user where id in ("+arr+")";
+  console.log(sql);
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("批量删除成功");
+  })  
+});
+
+/*
+ * 获取用户列表
+ */
+router.post('/getalluser', function(req, res, next) {
+  let sql = "select * from user";
+ 
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
  * 修改活动
  */
  router.post('/admin/activity/update', function(req, res, next) {

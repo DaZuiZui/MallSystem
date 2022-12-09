@@ -14,6 +14,10 @@ import ADminGoddsUpdate from '@/components/view/admin/ADminGoddsUpdate'
 import Activity from '@/components/view/admin/Activity'
 import AddActivity from '@/components/view/admin/AddActivity'
 import UpdateActivity from '@/components/view/admin/AdminUpdateActivity'
+import UserList  from '@/components/view/admin/UserAdmin'
+import UserUpdateAdmin from '@/components/view/admin/UpdateUserAdmin'
+import AdminBlogList from '@/components/view/admin/AdminBlog'
+
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +28,24 @@ export default new Router({
       path: '/asd',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    //论坛list
+    {
+      path: '/admin/blog/list',
+      name: 'zuilist',
+      component: AdminBlogList
+    },
+    //用户修改
+    {
+      path: '/user/update',
+      name: 'udpateuser',
+      component: UserUpdateAdmin,
+    },
+    //用户列表
+    {
+      path: '/admin/user/list',
+      name: 'userList',
+      component: UserList
     },
     //修改活动
     {

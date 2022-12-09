@@ -24,25 +24,11 @@
                 请输入一下内容，若不输入则为默认值录入 
               </div>
            <br>
-           标题 <el-input v-model="obj.name" placeholder="请输入内容"></el-input>
+           昵称 <el-input v-model="obj.username" placeholder="请输入内容" :disabled="true"></el-input>
            <br>
-     
-           当前产品的展示图片
-           <div class="block" >
-             <el-image :src="obj.ima_url" style="width:360px;height:100px"></el-image>
- 
-             <el-upload
-             class="upload-demo"
-             drag
-             name="files"
-             action="http://127.0.0.1:3000/uploadPicForAgency"
-             :on-success="fileOK"
-             multiple>
-             <i class="el-icon-upload"></i>
-             <div class="el-upload__text">若您想要更新图片<em>点击我</em></div>
-             <div class="el-upload__tip" slot="tip"> </div>
-           </el-upload>
-           </div>
+           密码 <el-input v-model="obj.password" placeholder="请输入内容"></el-input>
+           <br>
+        
 
         <el-button type="primary" style="width:100%" @click="submit">提交</el-button>
         </div></el-col>
@@ -60,8 +46,8 @@
         data() {
         return {
             obj: {
-                name: "",
-                ima_url: "",
+                username: "",
+                password: "",
             },
           };
         },
@@ -78,13 +64,13 @@
             },
          
             async submit(){
-               await synRequestPost("/admin/activity/update?name="+this.obj.name+"&ima_url="+this.obj.ima_url+"&aid="+getQueryVariable("id"));
+               await synRequestPost("/admin/user/update?password="+this.obj.password+"&aid="+getQueryVariable("id"));
                alert("修改成功");
             },
 
             async getDate(){
-                
-               let tmp = await synRequestPost("/activity/byid?aid="+getQueryVariable("id"));
+               let tmp = await synRequestPost("/user/qbyid?aid="+getQueryVariable("id"));
+               //console.log(tmp);
                this.obj = tmp[0];
             },
             goupdate(){

@@ -64,7 +64,7 @@
                     </template>
                     <el-menu-item-group>
                       <template slot="title">用户管理</template>
-                      <el-menu-item index="1-1">用户</el-menu-item>
+                      <el-menu-item index="/admin/user/list">用户</el-menu-item>
                     </el-menu-item-group>
                   </el-submenu>
 
