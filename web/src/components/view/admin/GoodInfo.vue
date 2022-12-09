@@ -133,7 +133,7 @@
                       </td>
                       <td rowspan="1" colspan="1" class="el-table_1_column_3   el-table__cell">
                         <div class="cell"> 
-                          <el-button type="success">修改</el-button>
+                          <el-button type="success" @click="goupdate(obj.id)">修改</el-button>
                           <el-button type="info">删除</el-button>
                         </div>
                       </td>
@@ -184,6 +184,13 @@
           async querybysome(){
   
             this.list = await synRequestPost("/querybysome?type="+this.type+"&name="+this.name);
+          },
+          
+          /**
+           *  修改页面
+           */
+          goupdate(id){
+            this.$router.push('/admin/good/updateGoodsInfo?id='+id);
           },
 
           /**

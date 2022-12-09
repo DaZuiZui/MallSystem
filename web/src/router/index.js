@@ -10,6 +10,8 @@ import AdminInfo from '@/components/view/admin/AdminInfo'
 import GoodType from '@/components/view/admin/GoodType'
 import GoodInfo from '@/components/view/admin/GoodInfo'
 import AddGood from '@/components/view/admin/AdminADdGood.vue'
+import ADminGoddsUpdate from '@/components/view/admin/ADminGoddsUpdate'
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +22,12 @@ export default new Router({
       path: '/asd',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    //修改商品与查看项目
+    {
+      path: '/admin/good/updateGoodsInfo',
+      name: 'ADminGoddsUpdate',
+      component: ADminGoddsUpdate
     },
     //添加商品
     {
