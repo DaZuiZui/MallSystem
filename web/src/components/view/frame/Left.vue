@@ -51,8 +51,8 @@
                       <span>活动公告管理</span>
                     </template>
                     <el-menu-item-group>
-                      <template slot="title">商品分类管理</template>
-                      <el-menu-item index="1-1">商品类型</el-menu-item>
+                      <template slot="title">活动公告</template>
+                      <el-menu-item index="/admin/activity">活动公告</el-menu-item>
                     </el-menu-item-group>
                   </el-submenu>
 
