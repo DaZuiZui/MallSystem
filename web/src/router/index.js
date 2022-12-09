@@ -12,7 +12,7 @@ import GoodInfo from '@/components/view/admin/GoodInfo'
 import AddGood from '@/components/view/admin/AdminADdGood.vue'
 import ADminGoddsUpdate from '@/components/view/admin/ADminGoddsUpdate'
 import Activity from '@/components/view/admin/Activity'
-
+import AddActivity from '@/components/view/admin/AddActivity'
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +24,13 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
+    //添加活动
+    {
+      path: '/admin/addactivity',
+      name: 'acitivity',
+      component: AddActivity
+    },
+    //活动管理面板
     {
       path: "/admin/activity",
       name: "activity",

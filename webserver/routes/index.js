@@ -35,6 +35,60 @@ router.get('/', function(req, res, next) {
   res.send(res1);
 });
 
+/**
+ * 单独删除活动信息
+ */
+ router.post('/admin/activity/byid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "delete from activity where id = "+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("删除成功");
+  }) 
+});
+
+/*
+ * 批量删除信息
+ */
+router.post('/admin/activity/delall', function(req, res, next) {
+  let arr = req.query.arr;
+  console.log(arr);
+  let sql = "delete from activity where id in ("+arr+")";
+  console.log(sql);
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("批量删除成功");
+  })  
+});
+
+/**
+ *  添加活动信息
+ */
+router.post('/add/activity', function(req, res, next) {
+  let name = req.query.name;
+  let ima_url = req.query.ima_url;
+  let create_time = req.query.create_time;
+  let sql = "insert into activity value(null,'"+name+"','"+ima_url+"','"+create_time+"')"
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("添加成功");
+  }) 
+ 
+});
+
+/*
+ * 获取活动主页
+ */
+router.post('/getActivityAll', function(req, res, next) {
+  let sql = "select * from activity";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
 /*
  * 商品信息修改
  */

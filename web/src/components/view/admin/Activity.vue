@@ -22,7 +22,7 @@
             <br>
             活动公告
             <br><hr>
-            <el-button type="primary" @click="addActivity">增加</el-button>
+            <el-button type="primary" @click="addGoodInfo">增加</el-button>
             <el-button type="danger" @click="deleteall">批量删除</el-button>
             
             <br>
@@ -37,17 +37,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr v-for="(obj,index) in list" :key="index">
                     <th scope="row">
                         &nbsp; &nbsp; &nbsp; 
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"   v-model="arr">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="obj.id"  v-model="arr">
                     </th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td>{{obj.name}}</td>
+
+                    <td>
+                        <div class="block" style="width:60px;height:60px">
+                            <el-image :src="obj.ima_url"></el-image>
+                          </div>
+                    </td>
+
+                    <td> 
+                        {{obj.create_time}}
+                    </td>
                     <td>
                         <button type="button" class="btn btn-success">修改</button>
-                        <button type="button" class="btn btn-danger">删除</button>
+                        <button type="button" class="btn btn-danger" @click="delById(obj.id)">删除</button>
                     </td>
                   </tr>
            
@@ -64,6 +72,7 @@
       import {synRequestPost} from "../../../../static/request"
       import Top from '../frame/Top.vue';
       import Left from '../frame/Left.vue'
+import { async } from "q";
       export default {
         name: 'AdminIndex',
         components: {Top,Left},
@@ -81,15 +90,14 @@
         methods: {
           //添加商品信息  
           addGoodInfo(){
-            this.$router.push('/admin/push/good');
+            this.$router.push('/admin/addactivity');
           },
           /**
            *  查看所有商品信息 
            */
           async queryallGood(){
-              this.list = await synRequestPost("/getallgoodsinfo");
-              console.log("asda");
-              console.log(this.list);
+              this.list = await synRequestPost("/getActivityAll");
+ 
           },
 
           async querybysome(){
@@ -107,7 +115,12 @@
            *  批量删除
            */ 
           async deleteall(){
-            await synRequestPost("/admin/info/delall?arr="+this.arr);
+            await synRequestPost("/admin/activity/delall?arr="+this.arr);
+            alert("删除成功");
+            this.queryallGood();
+          },
+          async delById(id){
+            await synRequestPost("/admin/activity/byid?aid="+id);
             alert("删除成功");
             this.queryallGood();
           }
