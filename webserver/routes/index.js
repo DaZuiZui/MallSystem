@@ -35,6 +35,26 @@ router.get('/', function(req, res, next) {
   res.send(res1);
 });
 
+/*
+ * 商品信息修改
+ */
+router.get('/admin/goods/update', function(req, res, next) {
+    let goodid = req.query.goodid;
+    let gamename = req.query.gamename;
+    let score = req.query.score;
+    let goodintroduction = req.query.goodintroduction;
+    let type = req.query.type;
+    let ima_url = req.query.ima_url;
+    let numbers = req.query.numbers;
+    let name = req.query.name;
+    let id  = rq.query.id;
+    let sql = "update good_info set gooid = '"+goodid+"' , gamename = '"+gamename+"' , score = '"+score+"' , goodintroduction='"+goodintroduction+"',";
+    sql += " type = '"+type+"' , ima_url = '"+ima_url+"' , numbers = '"+numbers+"' , name = '"+name+"' where id = "+id;
+    connection.query(sql, (err, rows, fields) => {
+      if (err) throw err
+      res.send("修改成功");
+    }) 
+});
 
 /*
  * 通过id查询详细信息
