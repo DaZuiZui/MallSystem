@@ -30,9 +30,9 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">标题</th>
+         
                     <th scope="col">图片</th>
-                    <th scope="col">发布时间</th>
+          
                     <th scope="col">操作</th>
                   </tr>
                 </thead>
@@ -42,19 +42,16 @@
                         &nbsp; &nbsp; &nbsp; 
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="obj.id"  v-model="arr">
                     </th>
-                    <td>{{obj.name}}</td>
-
+               
                     <td>
                         <div class="block" style="width:60px;height:60px">
                             <el-image :src="obj.ima_url"></el-image>
                           </div>
                     </td>
 
-                    <td> 
-                        {{obj.create_time}}
-                    </td>
+              
                     <td>
-                        <button type="button" class="btn btn-success" @click="goupdate(obj.id)">修改</button>
+ 
                         <button type="button" class="btn btn-danger" @click="delById(obj.id)">删除</button>
                     </td>
                   </tr>
@@ -97,7 +94,7 @@ import { async } from "q";
            *  查看所有商品信息 
            */
           async queryallGood(){
-              this.list = await synRequestPost("/getActivityAll");
+              this.list = await synRequestPost("/carousel/all");
  
           },
 
@@ -117,12 +114,12 @@ import { async } from "q";
            *  批量删除
            */ 
           async deleteall(){
-            await synRequestPost("/admin/activity/delall?arr="+this.arr);
+            await synRequestPost("/admin/carousel/delall?arr="+this.arr);
             alert("删除成功");
             this.queryallGood();
           },
           async delById(id){
-            await synRequestPost("/admin/activity/byid?aid="+id);
+            await synRequestPost("/admin/carousel/byid?aid="+id);
             alert("删除成功");
             this.queryallGood();
           }

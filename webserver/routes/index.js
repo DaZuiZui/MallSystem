@@ -36,6 +36,48 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 论坛单独删除活动信息
+ */
+ router.post('/admin/carousel/byid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "delete from carousel where id = "+aid;
+  console.log()
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("删除成功");
+  }) 
+});
+
+/*
+ * 论坛批量删除信息
+ */
+router.post('/admin/carousel/delall', function(req, res, next) {
+  let arr = req.query.arr;
+  console.log(arr);
+  let sql = "delete from carousel where id in ("+arr+")";
+  console.log(sql);
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("批量删除成功");
+  })  
+});
+
+/**
+ * 查看所有轮播图
+ */
+ router.post('/carousel/all', function(req, res, next) {
+  let sql = "select * from  carousel";
+ 
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+
+/**
  * 添加轮播图
  */
  router.post('/admin/carsosel/add', function(req, res, next) {
