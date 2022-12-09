@@ -36,6 +36,33 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 修改活动
+ */
+ router.post('/admin/activity/update', function(req, res, next) {
+  let aid = req.query.aid;
+  let ima_url = req.query.ima_url;
+  let name = req.query.name;
+  let sql = "update activity set name = '"+name+"', ima_url = '"+ima_url+"' where id ="+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("修改成功");
+  }) 
+});
+
+
+
+/**
+ * 通过id查询活动信息
+ */
+router.post('/activity/byid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "select * from activity where id = "+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+/**
  * 单独删除活动信息
  */
  router.post('/admin/activity/byid', function(req, res, next) {

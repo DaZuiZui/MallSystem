@@ -13,6 +13,7 @@ import AddGood from '@/components/view/admin/AdminADdGood.vue'
 import ADminGoddsUpdate from '@/components/view/admin/ADminGoddsUpdate'
 import Activity from '@/components/view/admin/Activity'
 import AddActivity from '@/components/view/admin/AddActivity'
+import UpdateActivity from '@/components/view/admin/AdminUpdateActivity'
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +24,12 @@ export default new Router({
       path: '/asd',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    //修改活动
+    {
+      path: '/admin/UpdateActivity',
+      name: 'UpdateActivity',
+      component: UpdateActivity
     },
     //添加活动
     {

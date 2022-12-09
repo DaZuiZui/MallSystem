@@ -54,7 +54,7 @@
                         {{obj.create_time}}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success">修改</button>
+                        <button type="button" class="btn btn-success" @click="goupdate(obj.id)">修改</button>
                         <button type="button" class="btn btn-danger" @click="delById(obj.id)">删除</button>
                     </td>
                   </tr>
@@ -92,6 +92,7 @@ import { async } from "q";
           addGoodInfo(){
             this.$router.push('/admin/addactivity');
           },
+      
           /**
            *  查看所有商品信息 
            */
@@ -108,7 +109,8 @@ import { async } from "q";
            *  修改页面
            */
           goupdate(id){
-            this.$router.push('/admin/good/updateGoodsInfo?id='+id);
+      
+            this.$router.push('/admin/UpdateActivity?id='+id);
           },
 
           /**
