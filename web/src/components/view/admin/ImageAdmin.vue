@@ -20,8 +20,8 @@
         
         <el-col :span="14"><div class="grid-content bg-purple">
             <br>
-            活动公告
-            <br><hr>
+            轮播图管理
+      <hr>
             <el-button type="primary" @click="addGoodInfo">增加</el-button>
             <el-button type="danger" @click="deleteall">批量删除</el-button>
             
@@ -31,8 +31,8 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">标题</th>
-                    <th scope="col">内容</th>
-                    <th scope="col">创建人唯一标识</th>
+                    <th scope="col">图片</th>
+                    <th scope="col">发布时间</th>
                     <th scope="col">操作</th>
                   </tr>
                 </thead>
@@ -42,17 +42,19 @@
                         &nbsp; &nbsp; &nbsp; 
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" :value="obj.id"  v-model="arr">
                     </th>
-                    <td>{{obj.tiitle}}</td>
+                    <td>{{obj.name}}</td>
 
                     <td>
-                         .......
+                        <div class="block" style="width:60px;height:60px">
+                            <el-image :src="obj.ima_url"></el-image>
+                          </div>
                     </td>
 
                     <td> 
-                        {{obj.create_by}}
+                        {{obj.create_time}}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success" @click="goupdate(obj.id)">详细与修改</button>
+                        <button type="button" class="btn btn-success" @click="goupdate(obj.id)">修改</button>
                         <button type="button" class="btn btn-danger" @click="delById(obj.id)">删除</button>
                     </td>
                   </tr>
@@ -70,7 +72,7 @@
       import {synRequestPost} from "../../../../static/request"
       import Top from '../frame/Top.vue';
       import Left from '../frame/Left.vue'
-      import { async } from "q";
+import { async } from "q";
       export default {
         name: 'AdminIndex',
         components: {Top,Left},
@@ -88,15 +90,14 @@
         methods: {
           //添加商品信息  
           addGoodInfo(){
-            this.$router.push('/admin/AdminBlogAdd');
+            this.$router.push('/admin/addCarousel');
           },
       
           /**
            *  查看所有商品信息 
            */
           async queryallGood(){
-              this.list = await synRequestPost("/blog/all");
-              console.log(this.list);
+              this.list = await synRequestPost("/getActivityAll");
  
           },
 
@@ -109,24 +110,24 @@
            */
           goupdate(id){
       
-            this.$router.push('/admin/blog/update?id='+id);
+            this.$router.push('/admin/UpdateActivity?id='+id);
           },
 
           /**
            *  批量删除
            */ 
           async deleteall(){
-            await synRequestPost("/admin/blog/delall?arr="+this.arr);
+            await synRequestPost("/admin/activity/delall?arr="+this.arr);
             alert("删除成功");
             this.queryallGood();
           },
           async delById(id){
-            await synRequestPost("/admin/blog/byid?aid="+id);
+            await synRequestPost("/admin/activity/byid?aid="+id);
             alert("删除成功");
             this.queryallGood();
           }
         }
-   
+  
       
     }
   </script>

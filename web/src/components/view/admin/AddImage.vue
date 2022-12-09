@@ -21,12 +21,10 @@
         <el-col :span="14"><div class="grid-content bg-purple">
             <br>   
             <div class="alert alert-primary" role="alert">
-                请输入一下内容，若不输入则为默认值录入 
+               添加轮播图图片
               </div>
            <br>
-           标题 <el-input v-model="name" placeholder="请输入内容"></el-input>
-           <br>
-     
+
           <br>
           介绍图片:
           <el-upload
@@ -74,7 +72,7 @@
             },
          
             async submit(){
-               await synRequestPost("/add/activity?name="+this.name+"&ima_url="+this.filename+"&create_time="+this.create_time);
+               await synRequestPost("/admin/carsosel/add?ima_url="+this.filename);
                alert("添加成功");
             },
 

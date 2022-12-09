@@ -17,7 +17,10 @@ import UpdateActivity from '@/components/view/admin/AdminUpdateActivity'
 import UserList  from '@/components/view/admin/UserAdmin'
 import UserUpdateAdmin from '@/components/view/admin/UpdateUserAdmin'
 import AdminBlogList from '@/components/view/admin/AdminBlog'
-
+import AdminBlogAdd from '@/components/view/admin/AdminAddBlog'
+import UpdateBlog from '@/components/view/admin/UpdateBlog'
+import AddCarousel from '@/components/view/admin/AddImage'
+import CarouselAdmin1 from '@/components/view/admin/ImageAdmin'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +31,30 @@ export default new Router({
       path: '/asd',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    //添加轮播图
+    {
+      path: '/admin/addCarousel',
+      name: 'tianjialunbotu',
+      component: AddCarousel
+    },
+    //轮播图管理
+    {
+      path: '/admin/CarouselAdmin',
+      name: 'CarouselAdmin1',
+      component: CarouselAdmin1
+    },
+    //更新博客
+    {
+      path: "/admin/blog/update",
+      name: "UpdateBlog",
+      component: UpdateBlog
+    },
+    //添加文章
+    {
+      path: '/admin/AdminBlogAdd',
+      name: 'AdminBlogAdd',
+      component: AdminBlogAdd
     },
     //论坛list
     {

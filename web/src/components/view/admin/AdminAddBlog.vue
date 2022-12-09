@@ -24,22 +24,17 @@
                 请输入一下内容，若不输入则为默认值录入 
               </div>
            <br>
-           标题 <el-input v-model="name" placeholder="请输入内容"></el-input>
+           标题 <el-input v-model="title" placeholder="请输入内容"></el-input>
            <br>
-     
+           请输入内容
+           <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">请输入内容</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" v-model="context"></textarea>
+          </div>
           <br>
-          介绍图片:
-          <el-upload
-          class="upload-demo"
-          drag
-          name="files"
-          action="http://127.0.0.1:3000/uploadPicForAgency"
-          :on-success="fileOK"
-          multiple>
-          <i class="el-icon-upload"></i>
-          <div class="el-upload__text">将介绍图片拖到此处，或<em>点击上传</em></div>
-          <div class="el-upload__tip" slot="tip"> </div>
-        </el-upload>
+ 
 
         <el-button type="primary" style="width:100%" @click="submit">提交</el-button>
         </div></el-col>
@@ -59,6 +54,8 @@
             filename: "",
             create_time: new Date(),
             name: "",
+            title: "",
+            context: "",
           };
         },
 
@@ -74,7 +71,7 @@
             },
          
             async submit(){
-               await synRequestPost("/add/activity?name="+this.name+"&ima_url="+this.filename+"&create_time="+this.create_time);
+               await synRequestPost("/blog/add?aid="+getCookie("id")+"&title="+this.title+"&context="+this.context+"&create_time="+this.create_time);
                alert("添加成功");
             },
 

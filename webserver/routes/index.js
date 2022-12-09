@@ -36,6 +36,103 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 添加轮播图
+ */
+ router.post('/admin/carsosel/add', function(req, res, next) {
+  let ima_url = req.query.ima_url;
+  let sql = "insert into carousel value(null,'"+ima_url+"')"
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("添加成功");
+  }) 
+});
+
+/**
+ * 通过id查询user
+ */
+ router.post('/blog/byid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "select * from blog where id = "+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ * 修改论坛内容
+ */
+ router.post('/admin/blog/update', function(req, res, next) {
+  let aid = req.query.aid;
+  let title = req.query.title;
+  let context = req.query.context;
+  let sql = "update blog set tiitle = '"+title+"' , context = '"+context+"' where id = "+aid
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("修改成工");
+  }) 
+ 
+});
+
+
+/**
+ * 论坛单独删除活动信息
+ */
+ router.post('/admin/blog/byid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "delete from blog where id = "+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("删除成功");
+  }) 
+});
+
+/*
+ * 论坛批量删除信息
+ */
+router.post('/admin/blog/delall', function(req, res, next) {
+  let arr = req.query.arr;
+  console.log(arr);
+  let sql = "delete from blog where id in ("+arr+")";
+  console.log(sql);
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("批量删除成功");
+  })  
+});
+
+/***
+ *  获取全部的博文
+ */
+router.post('/blog/all', function(req, res, next) {
+  let sql = "select * from blog";
+ 
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ * 添加博客
+ */
+router.post('/blog/add', function(req, res, next) {
+  let aid = req.query.aid;
+  let create_time = req.query.create_time;
+  let title = req.query.title;
+  let context = req.query.context;
+
+  let sql = "insert into blog value(null,'"+title+"','"+context+"','"+create_time+"','"+aid+"')"
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("添加成功");
+  }) 
+});
+
+
+/**
  * 修改用户
  */
  router.post('/admin/user/update', function(req, res, next) {

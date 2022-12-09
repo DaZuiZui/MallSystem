@@ -75,7 +75,7 @@
                     </template>
                     <el-menu-item-group>
                       <template slot="title">论坛管理</template>
-                      <el-menu-item index="1-1">系统管理</el-menu-item>
+                      <el-menu-item index="/admin/blog/list">论坛管理</el-menu-item>
                     </el-menu-item-group>
                   </el-submenu>
 
@@ -86,9 +86,9 @@
                     </template>
                     <el-menu-item-group>
                       <template slot="title">系统管理</template>
-                      <el-menu-item index="1-1">轮播图管理</el-menu-item>
-                      <el-menu-item index="1-2">新闻资讯</el-menu-item>
-                      <el-menu-item index="1-2">客服姑那里</el-menu-item>
+                      <el-menu-item index="/admin/CarouselAdmin">轮播图管理</el-menu-item>
+ 
+                      <el-menu-item index="1-2">客服管理</el-menu-item>
                     </el-menu-item-group>
                   </el-submenu>
 

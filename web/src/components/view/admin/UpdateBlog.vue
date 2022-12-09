@@ -24,22 +24,17 @@
                 请输入一下内容，若不输入则为默认值录入 
               </div>
            <br>
-           标题 <el-input v-model="name" placeholder="请输入内容"></el-input>
+           标题 <el-input v-model="obj.tiitle" placeholder="请输入内容" :disabled="false"></el-input>
            <br>
-     
-          <br>
-          介绍图片:
-          <el-upload
-          class="upload-demo"
-          drag
-          name="files"
-          action="http://127.0.0.1:3000/uploadPicForAgency"
-          :on-success="fileOK"
-          multiple>
-          <i class="el-icon-upload"></i>
-          <div class="el-upload__text">将介绍图片拖到此处，或<em>点击上传</em></div>
-          <div class="el-upload__tip" slot="tip"> </div>
-        </el-upload>
+           内容
+           <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">请输入简介</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" v-model="obj.context"></textarea>
+          </div>
+           <br>
+        
 
         <el-button type="primary" style="width:100%" @click="submit">提交</el-button>
         </div></el-col>
@@ -56,28 +51,34 @@
         components: {Top,Left},
         data() {
         return {
-            filename: "",
-            create_time: new Date(),
-            name: "",
+            obj: {
+                tiitle: "",
+                context: "",
+            },
           };
         },
 
                 
         mounted(){
-       
+            this.getDate();
         },
   
         methods: {
             //上传成公
             fileOK(response, file, fileList){
-                this.filename = "http://localhost:3000/download?file_name="+response;
+                this.obj.ima_url = "http://localhost:3000/download?file_name="+response;
             },
          
             async submit(){
-               await synRequestPost("/add/activity?name="+this.name+"&ima_url="+this.filename+"&create_time="+this.create_time);
-               alert("添加成功");
+               await synRequestPost("/admin/blog/update?title="+this.obj.tiitle+"&aid="+getQueryVariable("id")+"&context="+this.obj.context);
+               alert("修改成功");
             },
 
+            async getDate(){
+               let tmp = await synRequestPost("/blog/byid?aid="+getQueryVariable("id"));
+               //console.log(tmp);
+               this.obj = tmp[0];
+            },
             goupdate(){
               
             }
