@@ -6,7 +6,7 @@
         <table class="table">
             <thead>
               <tr>
-            
+                <th scope="col"></th>    <th scope="col"></th>    <th scope="col"></th>
                 <th scope="col">标题</th>
                 <th scope="col">内容</th>
                 <th scope="col"></th>
@@ -14,7 +14,14 @@
             </thead>
             <tbody>
               <tr v-for="(obj,index) in list" :key="index">
-            
+                <td>
+                     
+               </td>    <td>
+                     
+               </td>
+               <td>
+                     
+               </td>
                 <td>{{obj.tiitle}}</td>
 
                 <td>

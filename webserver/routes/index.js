@@ -31,8 +31,45 @@ const {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  let res1 = "userLogin("
-  res.send(res1);
+
+   res.send(res1);
+});
+
+/**
+ * 查看用户所有订单
+ */
+router.post('/listall', function(req, res, next) {
+  let userid = req.query.aid;
+  let sql = "SELECT 	t1.id as 'id',t2.name as 'name' from 	buyhis t1 LEFT JOIN 	good_info t2 on t2.id = t1.good_id where t1.user_id = '"+userid+"'   ";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ * 修改订单状态
+ */
+router.post('/admin/updatelistonthis', function(req, res, next) {
+  let aid = req.query.aid;
+  let status = req.query.status;
+  let sql = "update buyhis set status = '"+status+"' where id = "+aid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("操作成功");
+  }) 
+});
+
+
+/* GET home page. */
+router.post('/user/dingdan', function(req, res, next) {
+  let userid = req.query.userid;
+  let status = req.query.status;
+  let sql = "SELECT 	t1.id as 'id',t2.name as 'name' from 	buyhis t1 LEFT JOIN 	good_info t2 on t2.id = t1.good_id where t1.user_id = '"+userid+"'  and t1.status = '"+status+"' ";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
 });
 
 /* GET home page. */

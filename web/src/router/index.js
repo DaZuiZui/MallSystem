@@ -28,6 +28,7 @@ import UserInfo from '@/components/view/UserInfo'
 import UserActivity from '@/components/view/UserActivity'
 import UserBlog from '@/components/view/UserBlog'
 import ViewBlog from '@/components/view/ViewBlog'
+import Shop from '@/components/view/ShopCar'
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +39,11 @@ export default new Router({
       path: '/asd',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/user/shop',
+      name: 'usershop',
+      component: Shop
     },
     //查看详细
     {
