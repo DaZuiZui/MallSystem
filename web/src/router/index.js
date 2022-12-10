@@ -20,7 +20,14 @@ import AdminBlogList from '@/components/view/admin/AdminBlog'
 import AdminBlogAdd from '@/components/view/admin/AdminAddBlog'
 import UpdateBlog from '@/components/view/admin/UpdateBlog'
 import AddCarousel from '@/components/view/admin/AddImage'
+import UserIndex from '@/components/view/user/UserIndex'
 import CarouselAdmin1 from '@/components/view/admin/ImageAdmin'
+import Index from '@/components/view/UserInex'
+import UserInfoShop from '@/components/view/UserInfoShopping'
+import UserInfo from '@/components/view/UserInfo'
+import UserActivity from '@/components/view/UserActivity'
+import UserBlog from '@/components/view/UserBlog'
+import ViewBlog from '@/components/view/ViewBlog'
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +38,43 @@ export default new Router({
       path: '/asd',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    //查看详细
+    {
+      path: '/user/blog/view',
+      name: 'userblogview',
+      component: ViewBlog
+    },
+    {
+      path: '/user/blog',
+      name: 'userblog',
+      component: UserBlog
+    },
+    {
+      path: '/user/activity',
+      name: 'activity',
+      component: UserActivity
+    },
+    {
+      path: '/user/info',
+      name: 'userinfo',
+      component: UserInfo
+    },
+    //商品集合
+    {
+      path: '/u/shoppinglist',
+      name: 'shoppinglist',
+      component: UserInfoShop
+    },
+    {
+      path: '/u/index',
+      name: 'ui',
+      component: Index
+    },
+    {
+      path: '/user/index1',
+      name: 'UserIndex',
+      comments: UserIndex,
     },
     //添加轮播图
     {

@@ -35,6 +35,24 @@ router.get('/', function(req, res, next) {
   res.send(res1);
 });
 
+/* GET home page. */
+router.post('/buygood', function(req, res, next) {
+  let userid = req.query.userid;
+  let goodid = req.query.goodid;
+
+  let sql = "insert into buyhis value(null,'"+goodid+"','"+userid+"',0)"
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+  }) 
+
+  sql = "update good_info set numbers = (numbers - 1) where id ="+goodid
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+  }) 
+
+  res.send("购买成功");
+});
+
 /**
  * 论坛单独删除活动信息
  */
@@ -494,9 +512,9 @@ router.post('/queryalltype', function(req, res, next) {
  router.post('/user/update', function(req, res, next) {
   let id = req.query.id;
   let password = req.query.password;
-
+  let address = req.query.address;
   //修改密码
-  let sql = "update user set password = '"+password+"' where id = "+id;
+  let sql = "update user set password = '"+password+"' ,address = '"+address+"' where id = "+id;
 
   connection.query(sql, (err, rows, fields) => {
     if (err) throw err
@@ -560,7 +578,7 @@ router.post('/user/login',(req,res) =>{
    
     }else{
   //写入mysql
-      sql = "insert into user value(null,'"+username +"','"+password+"',3)";
+      sql = "insert into user value(null,'"+username +"','"+password+"',3,'')";
       connection.query(sql, (err, rows, fields) => {
         if (err) throw err
       
