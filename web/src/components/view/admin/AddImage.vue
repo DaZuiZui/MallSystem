@@ -12,13 +12,13 @@
       <!--Body-->
       <el-row :gutter="20">
         <!--left body-->
-        <el-col :span="7"><div class="grid-content bg-purple">
+        <el-col :span="10"><div class="grid-content bg-purple">
             <div>
               <Left></Left>
             </div>
         </div></el-col>
  
-        <el-col :span="14"><div class="grid-content bg-purple">
+        <el-col :span="10"><div class="grid-content bg-purple">
             <br>   
             <div class="alert alert-primary" role="alert">
                添加轮播图图片
@@ -78,11 +78,8 @@
 
             goupdate(){
               
-            }
-            
+            }   
         }
-    
-      
     }
   </script>
     
