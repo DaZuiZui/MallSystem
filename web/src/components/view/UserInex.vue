@@ -4,23 +4,34 @@
             <Top></Top>
         </div>
         <el-carousel :interval="4000" type="card" height="300px"  width="100%" >
-            <el-carousel-item v-for="item in 4" :key="item.id"   >
-              <img width="100%" src="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" class="image">
+            <el-carousel-item v-for="item in list" :key="item.id"   >
+              <img width="100%" :src="item.ima_url" class="image">
             </el-carousel-item>
           </el-carousel>
+        这是我们的首页，介绍文字
  
     </div>
   </template>
   
   <script>
-  import Top from '../view/user/frame/Top.vue'
+  import Top from '../view/user/frame/Top.vue';
+  import {synRequestPost} from "../../../static/request"
   export default {
     name: 'HelloWorld',
     components:{Top},
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        list: [],
       }
+    },
+    mounted(){
+        this.getAll();
+    },
+    methods: {
+        async getAll(){
+           this.list =  await synRequestPost('/carousel/all');
+        }
     }
   }
   </script>

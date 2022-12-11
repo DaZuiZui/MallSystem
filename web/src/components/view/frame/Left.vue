@@ -88,7 +88,7 @@
                       <template slot="title">系统管理</template>
                       <el-menu-item index="/admin/CarouselAdmin">轮播图管理</el-menu-item>
  
-                      <el-menu-item index="1-2">客服管理</el-menu-item>
+                      <el-menu-item index="/admin/chatlist">客服管理</el-menu-item>
                     </el-menu-item-group>
                   </el-submenu>
 
@@ -99,12 +99,8 @@
                     </template>
                     <el-menu-item-group>
                       <template slot="title">订单管理</template>
-                      <el-menu-item index="1-1">已支付订单</el-menu-item>
-                      <el-menu-item index="1-2">未支付订单</el-menu-item>
-                      <el-menu-item index="1-3">已完成订单</el-menu-item>
-                      <el-menu-item index="1-4">未完成订单</el-menu-item>
-                      <el-menu-item index="1-5">已退款订单</el-menu-item>
-                      <el-menu-item index="1-6">未发布订单</el-menu-item>
+                      <el-menu-item index="/admin/order">订单管理</el-menu-item>
+                     
                     </el-menu-item-group>
                   </el-submenu>
                   <br>   <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br> 

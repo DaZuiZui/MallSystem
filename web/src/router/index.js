@@ -29,6 +29,10 @@ import UserActivity from '@/components/view/UserActivity'
 import UserBlog from '@/components/view/UserBlog'
 import ViewBlog from '@/components/view/ViewBlog'
 import Shop from '@/components/view/ShopCar'
+import Orderadmin from '@/components/view/admin/Orderadmin'
+import UserChat from '@/components/view/UserChat'
+import AdminChatList from '@/components/view/admin/AdminChatList'
+import AdminCHatIndex from '@/components/view/admin/AdminChatIndex'
 Vue.use(Router)
 
 export default new Router({
@@ -40,6 +44,41 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
+    /**
+     * 聊天主页
+     */
+    {
+      path: '/admin/chat/index',
+      name: 'adminchatindex',
+      component: AdminCHatIndex
+    },
+    /**
+     * 管理聊天页面
+     */
+    {
+      path: '/admin/chatlist',
+      name: 'AdminChatList',
+      component: AdminChatList
+    },
+    /**
+     * 用户聊天
+     */
+    {
+      path: '/user/chat',
+      name: 'userChat',
+      component: UserChat
+    },
+    /**
+     * 订单管理
+     */
+    {
+      path: '/admin/order',
+      name: 'orderadmin',
+      component: Orderadmin
+    },
+    /**
+     * 用户商场
+     */
     {
       path: '/user/shop',
       name: 'usershop',

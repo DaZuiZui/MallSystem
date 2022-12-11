@@ -31,9 +31,71 @@ const {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
    res.send(res1);
 });
+
+/**
+ * 查询聊天记录
+ */
+router.post('/chat/adminall', function(req, res, next) {
+  let sql = "SELECT user_id from chat GROUP BY user_id";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ * 查询聊天记录
+ */
+router.post('/chat/byuserid', function(req, res, next) {
+  let userid = req.query.userid;
+  let sql = "select * from chat where user_id = "+userid;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ * 发送聊天
+ */
+router.post('/chat/send', function(req, res, next) {
+  let userid = req.query.userid;
+  let type = req.query.type;
+  let context = req.query.context;
+  let sql = "insert into chat value(null,'"+userid+"','"+context+"','"+type+"')"
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("发送成功");
+  }) 
+});
+
+/**
+ * 管理员查询订单
+ */
+router.post('/admin/dingdan', function(req, res, next) {
+  let userid = req.query.userid;
+  let status = req.query.status;
+  let sql = "SELECT 	t1.id as 'id',t2.name as 'name' from 	buyhis t1 LEFT JOIN 	good_info t2 on t2.id = t1.good_id where  t1.status = '"+status+"' ";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ * 管理员所有订单
+ */
+router.post('/admin/listall', function(req, res, next) {
+  let userid = req.query.aid;
+  let sql = "SELECT 	t1.id as 'id',t2.name as 'name' from 	buyhis t1 LEFT JOIN 	good_info t2 on t2.id = t1.good_id   ";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
 
 /**
  * 查看用户所有订单
