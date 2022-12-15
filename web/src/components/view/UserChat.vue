@@ -16,7 +16,7 @@
                                     <b>我说:</b> 
                             </div>
                             <div v-else> 
-                                    <b>客户说:</b>
+                                    <b>管理员说:</b>
                             </div>
                              
                             <div style="font-size:14px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;

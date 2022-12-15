@@ -13,6 +13,7 @@
         <el-menu-item  ><a href="/user/activity"  target="_blank">活动公告</a></el-menu-item>
         <el-menu-item  ><a href="/user/blog"  target="_blank">论坛信息</a></el-menu-item>
         <el-menu-item index="/user/info"><a href="/user/info"   target="_blank">我的</a></el-menu-item>
+        <el-menu-item  ><a href="/user/shop"  target="_blank">订单记录</a></el-menu-item>
         <el-menu-item  ><a href="/user/shop"  target="_blank">购物车</a></el-menu-item>
         <el-menu-item index="4"><a   target="_blank">客服</a></el-menu-item>
       </el-menu>

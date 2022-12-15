@@ -3,20 +3,43 @@
         <div>
             <Top></Top>
         </div>
-        
-        <div v-for="(obj,index) in list" :key="index">
-            <div class="jumbotron"  v-if="obj.numbers > 0">
-                <h1 class="display-4">{{obj.name}}</h1>
-                <p class="lead">游戏昵称:{{obj.gamename}} , 游戏分类: {{obj.type}}
-                    价钱¥ {{obj.score}} 剩余数量：{{obj.numbers}}
-                </p>
-                <hr class="my-4">
-                <p> 
-                    <img width="100%" height="250px" :src="obj.ima_url" class="image">
-                </p>
-                <a class="btn btn-primary btn-lg" href="#" role="button" @click="gotobuy(obj.id)">去购买</a>
+
+     
+
+        <el-row :gutter="20">
+          <el-col :span="1"><div class="grid-content bg-purple">&nbsp;</div></el-col>
+          <el-col :span="20"><div class="grid-content bg-purple">
+            <div v-for="(obj,index) in list" :key="index">
+              <div class="card" style="width: 18rem;float:left;margin-left:110px;margin-top:30px">  
+                <img :src="obj.ima_url" class="card-img-top" width="100px" height="160px">
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.name}}</h5>
+                  <p class="card-text"> 
+                    <b>游戏昵称:</b>{{obj.gamename}} ,<b> 游戏分类:</b> {{obj.type}}
+                    <b>价钱¥</b> {{obj.score}} <b>剩余数量：</b>{{obj.numbers}}
+                  </p>
+                  <a href="#" class="btn btn-primary">购买</a>
+                  <button type="button" class="btn btn-success">加入购物车</button>
+                </div>
+              </div>
+                <!--
+                <div class="jumbotron"  v-if="obj.numbers > 0">
+                    <h1 class="display-4">{{obj.name}}</h1>
+                    <p class="lead">游戏昵称:{{obj.gamename}} , 游戏分类: {{obj.type}}
+                        价钱¥ {{obj.score}} 剩余数量：{{obj.numbers}}
+                    </p>
+                    <hr class="my-4">
+                    <p> 
+                        <img width="100%" height="250px" :src="obj.ima_url" class="image">
+                    </p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button" @click="gotobuy(obj.id)">去购买</a>
+                </div>-->
             </div>
-        </div>
+
+
+          </div></el-col>
+          <el-col :span="1"><div class="grid-content bg-purple">&nbsp;</div></el-col>
+        </el-row>
     </div>
   </template>
   

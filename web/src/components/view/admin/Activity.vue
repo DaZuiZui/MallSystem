@@ -12,7 +12,7 @@
       <!--Body-->
       <el-row :gutter="20">
         <!--left body-->
-        <el-col style="width:30%"><div class="grid-content bg-purple">
+        <el-col style="width:33%"><div class="grid-content bg-purple">
             <div>
               <Left></Left>
             </div>
