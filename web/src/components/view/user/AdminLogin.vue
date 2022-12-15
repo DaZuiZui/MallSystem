@@ -61,6 +61,7 @@
               setCookie("password",obj[0].password);
               setCookie("role",obj[0].role);
               setCookie("id",obj[0].id);
+              setCookie("address",obj[0].address);
               window.location.href="http://127.0.0.1:8080/admin/adminIndex";
            }
 
