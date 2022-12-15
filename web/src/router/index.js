@@ -42,6 +42,7 @@ export default new Router({
     {
       path: '/asd',
       name: 'HelloWorld',
+      
       component: HelloWorld
     },
     /**
