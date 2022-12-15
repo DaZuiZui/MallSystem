@@ -35,6 +35,45 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 移除购物车
+ */
+router.post('/remove/goodsInShopCar', function(req, res, next) {
+  let id = req.query.aid;
+  console.log(id);
+  let sql = "delete from good_shopcar where id = "+id;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("删除成功");
+  })  
+});
+
+
+/**
+ * 购物车列表
+ */
+router.post('/shopcar/list', function(req, res, next) {
+  let userid = req.query.userid;
+  let sql = "SELECT t1.id as 'carid', t2.score , t2.type , t2.gamename , t1.good_id as 'goodid', t2.name, t2.ima_url from  good_shopcar t1 LEFT JOIN good_info t2 on t1.good_id = t2.id where t1.user_id = "+userid
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
+ *  添加购物车
+ */
+router.post('/shopcar/add', function(req, res, next) {
+  let userid = req.query.userid;
+  let good_id = req.query.good_id;
+  let sql = "insert into good_shopcar value(null,'"+good_id+"','"+userid+"')";
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send("添加成功");
+  }) 
+});
+
+/**
  * 查询聊天记录
  */
 router.post('/chat/adminall', function(req, res, next) {
@@ -677,7 +716,7 @@ router.post('/user/login',(req,res) =>{
    
     }else{
   //写入mysql
-      sql = "insert into user value(null,'"+username +"','"+password+"',3,'')";
+      sql = "insert into user value(null,'"+username +"','"+password+"',3,'',0)";
       connection.query(sql, (err, rows, fields) => {
         if (err) throw err
       

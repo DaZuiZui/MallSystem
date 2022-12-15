@@ -10,6 +10,7 @@
         placeholder="请输入内容"
         v-model="user.address">
       </el-input>
+      
       我的密码
       <el-input v-model="user.password" placeholder="请输入内容"></el-input>
       <el-button type="primary" @click="submit">修改</el-button>
@@ -49,6 +50,8 @@
             let url = "/user/update?password="+this.user.password+"&address="+this.user.address+"&id="+this.user.id;
             await synRequestPost(url);
             alert("修改成功");
+            setCookie("address",this.user.address);
+            setCookie("password",this.user.password);
         },
     },
   }

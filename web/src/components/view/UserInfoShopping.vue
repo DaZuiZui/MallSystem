@@ -10,7 +10,7 @@
           <el-col :span="1"><div class="grid-content bg-purple">&nbsp;</div></el-col>
           <el-col :span="20"><div class="grid-content bg-purple">
             <div v-for="(obj,index) in list" :key="index">
-              <div class="card" style="width: 18rem;float:left;margin-left:110px;margin-top:30px">  
+              <div class="card" style="width: 18rem;float:left;margin-left:110px;margin-top:30px" v-if="obj.numbers > 0">  
                 <img :src="obj.ima_url" class="card-img-top" width="100px" height="160px">
                 <div class="card-body">
                   <h5 class="card-title">{{obj.name}}</h5>
@@ -18,8 +18,8 @@
                     <b>游戏昵称:</b>{{obj.gamename}} ,<b> 游戏分类:</b> {{obj.type}}
                     <b>价钱¥</b> {{obj.score}} <b>剩余数量：</b>{{obj.numbers}}
                   </p>
-                  <a href="#" class="btn btn-primary">购买</a>
-                  <button type="button" class="btn btn-success">加入购物车</button>
+                  <a href="#" class="btn btn-primary" @click="goviewbuy(obj.id)">购买</a>
+                  <button type="button" class="btn btn-success" @click="toShopCar(obj.id)">加入购物车</button>
                 </div>
               </div>
                 <!--
@@ -71,7 +71,22 @@
              await synRequestPost("/buygood?goodid="+id+"&userid="+getCookie("id"));
              alert("购买完事");
              this.queryallGood();
-          }
+          },
+
+          /**
+           *  添加购物车
+           */
+          async toShopCar(good_id){
+            await synRequestPost("/shopcar/add?good_id="+good_id+"&userid="+getCookie("id"));
+            alert("添加成功购物车");
+          },
+
+          /**
+           *  前方登入页面
+           */
+          goviewbuy(id){
+            window.location.href="http://127.0.0.1:8080/shop/view?id="+id;
+          },
     }
   }
   </script>

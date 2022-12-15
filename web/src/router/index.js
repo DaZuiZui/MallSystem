@@ -33,6 +33,9 @@ import Orderadmin from '@/components/view/admin/Orderadmin'
 import UserChat from '@/components/view/UserChat'
 import AdminChatList from '@/components/view/admin/AdminChatList'
 import AdminCHatIndex from '@/components/view/admin/AdminChatIndex'
+import UserShopCar from '@/components/view/UserShopCar'
+import ViewGoods from '@/components/view/ViewGoods'
+import Gobuy from '@/components/view/Gobuy'
 Vue.use(Router)
 
 export default new Router({
@@ -42,8 +45,31 @@ export default new Router({
     {
       path: '/asd',
       name: 'HelloWorld',
-      
       component: HelloWorld
+    },
+    /**
+     * 购买页面
+     */
+    {
+      path: '/shop/gobuy',
+      name: 'gobuy',
+      component: Gobuy
+    },
+    /**
+     *  查看商品信息
+     */
+    {
+      path: '/shop/view',
+      name: 'viewshop',
+      component: ViewGoods
+    },
+    /**
+     * 购物车列表
+     */
+    {
+      path: '/shopcar/list',
+      name: 'usershop',
+      component: UserShopCar,
     },
     /**
      * 聊天主页
