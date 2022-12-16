@@ -9,6 +9,14 @@
         <el-row :gutter="20">
           <el-col :span="1"><div class="grid-content bg-purple">&nbsp;</div></el-col>
           <el-col :span="20"><div class="grid-content bg-purple">
+            <br>
+            <div class="input-group mb-3" style="margin-left:110px;width:90%">
+              <input type="text" v-model="context " class="form-control" placeholder="请输入商品信息进行查询" aria-label="请输入商品信息进行查询" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="likeseach">查询</button>
+              </div>
+            </div>
+
             <div v-for="(obj,index) in list" :key="index">
               <div class="card" style="width: 18rem;float:left;margin-left:110px;margin-top:30px" v-if="obj.numbers > 0">  
                 <img :src="obj.ima_url" class="card-img-top" width="100px" height="160px">
@@ -52,7 +60,8 @@
     data () {
       return {
         list: [],
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        context: "",
       }
     },
     mounted(){
@@ -82,6 +91,12 @@
           },
 
           /**
+           *  模糊插叙
+           */ 
+          async likeseach(){
+            this.list = await synRequestPost("/shop/likeseach?contexr="+this.context);
+          },
+           /**
            *  前方登入页面
            */
           goviewbuy(id){
