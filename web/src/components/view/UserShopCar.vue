@@ -5,10 +5,13 @@
         </div>
         
         <div>
-            购物车列表
+             <br>
             <el-row :gutter="20">
                 <el-col :span="1"><div class="grid-content bg-purple">&nbsp;</div></el-col>
                 <el-col :span="20"><div class="grid-content bg-purple">
+                    <div class="alert alert-success" role="alert">
+                    购物车列表
+                      </div>
                     <table class="table">
                         <thead>
                           <tr>
@@ -32,7 +35,7 @@
                             <td>{{obj.score}}</td>
                             <td>{{obj.type}}</td>
                             <td>
-                                <button type="button" class="btn btn-primary">下单</button>
+                                <button type="button" class="btn btn-primary" @click="gotobuy(obj.goodid,obj.carid)">下单</button>
                                 <button type="button" class="btn btn-primary" @click="remove(obj.carid)">移除</button>
                             </td>
                           </tr>
@@ -70,19 +73,21 @@
               console.log(this.list);
           },
 
-          async gotobuy(id){
+          async gotobuy(id,cid){
              await synRequestPost("/buygood?goodid="+id+"&userid="+getCookie("id"));
+             //删除
+             this.remove(cid);
              alert("购买完事");
              this.queryallGood();
           },
+
+    
 
           /**
            * 移除
            */
           async remove(id){
-         
             await synRequestPost("/remove/goodsInShopCar?aid="+id);
-            alert("移除成功");
             this.queryallGood();
           }
     }

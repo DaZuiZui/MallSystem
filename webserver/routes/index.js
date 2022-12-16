@@ -35,6 +35,18 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 模糊查询获取文件
+ */
+router.post('/shop/likeseach', function(req, res, next) {
+  let contexr = req.query.contexr;
+  let sql = "select * from good_info where name like  '%"+contexr+"%'"
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
+});
+
+/**
  * 移除购物车
  */
 router.post('/remove/goodsInShopCar', function(req, res, next) {

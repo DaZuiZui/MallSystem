@@ -117,7 +117,7 @@
            *  
            */
           handleClose(done) {
-                this.$confirm('确定要取消付款吗?')
+                this.$confirm('确定是否已经确认付款?')
                 .then(_ => {
                     done();
                 })
