@@ -35,6 +35,21 @@ router.get('/', function(req, res, next) {
 });
 
 /**
+ * 商品类型单出删除
+ */
+router.post('/admin/goodtype/byid', function(req, res, next) {
+  let aid = req.query.aid;
+  let sql = "delete from good_type where id = "+aid;
+  console.log()
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+
+    res.send("删除成功");
+  }) 
+});
+
+
+/**
  * 模糊查询获取文件
  */
 router.post('/shop/likeseach', function(req, res, next) {

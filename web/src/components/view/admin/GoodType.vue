@@ -43,7 +43,7 @@
                   <td>{{obj.id}}</td>
                   <td>{{obj.type_name}}</td>
                   <td>
-                    <button type="button" class="btn btn-danger">删除</button>
+                    <button type="button" class="btn btn-danger" @click="deldeteByid(obj.id)">删除</button>
                   </td>
                 </tr>
                
@@ -79,14 +79,22 @@
                 await synRequestPost("/post/goodtype?name="+this.name);
                 this.queryalltype();
                 alert("插入成功");
+                
             },
             async delAll(){
                await synRequestPost("/admin/type/dellAll?arr="+this.arr);
+               this.queryalltype();
             },  
             
             //获取全部分类
             async queryalltype(){
               this.list = await synRequestPost("/queryalltype");
+            },
+            //单独删除
+            async deldeteByid(id){
+                await synRequestPost("/admin/goodtype/byid?aid="+id);
+                this.queryalltype();
+                alert("删除成功")
             }
         }
     
