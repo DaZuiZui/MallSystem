@@ -30,7 +30,7 @@
                   <button type="button" class="btn btn-success" @click="toShopCar(obj.id)">加入购物车</button>
                 </div>
               </div>
-                <!--
+                <!-- 
                 <div class="jumbotron"  v-if="obj.numbers > 0">
                     <h1 class="display-4">{{obj.name}}</h1>
                     <p class="lead">游戏昵称:{{obj.gamename}} , 游戏分类: {{obj.type}}
@@ -127,4 +127,4 @@
 </style>
 <style scoped>
 @import '../../../static/bootcss/css/bootstrap.min.css'
-</style>
+</style>   
