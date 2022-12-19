@@ -11,7 +11,7 @@ var multer  = require('multer');
  var connection = mysql.createConnection({
      host: '101.34.210.38',   //主机
      user: 'bryan',              //数据库用户名
-     password: 'admin',          //数据库密码
+     password: 'qwe123',          //数据库密码
      port: '3306',       
      database: 'mell',           //数据库名称
      charset: 'UTF8_GENERAL_CI' //数据库编码
@@ -32,6 +32,19 @@ const {
 /* GET home page. */
 router.get('/', function(req, res, next) {
    res.send(res1);
+});
+
+/**
+ * 分页查询商品
+ */
+router.post('/admin/limitgood', function(req, res, next) {
+  let start = req.query.start;
+  let end1 = req.query.end1;
+  let sql = "select * from good_info where numbers > 0 limit "+start+","+end1;
+  connection.query(sql, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows);
+  }) 
 });
 
 /**
