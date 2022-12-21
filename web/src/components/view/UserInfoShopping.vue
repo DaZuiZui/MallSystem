@@ -30,20 +30,22 @@
                   <button type="button" class="btn btn-success" @click="toShopCar(obj.id)">加入购物车</button>
                 </div>
               </div>
-                <!-- 
-                <div class="jumbotron"  v-if="obj.numbers > 0">
-                    <h1 class="display-4">{{obj.name}}</h1>
-                    <p class="lead">游戏昵称:{{obj.gamename}} , 游戏分类: {{obj.type}}
-                        价钱¥ {{obj.score}} 剩余数量：{{obj.numbers}}
-                    </p>
-                    <hr class="my-4">
-                    <p> 
-                        <img width="100%" height="250px" :src="obj.ima_url" class="image">
-                    </p>
-                    <a class="btn btn-primary btn-lg" href="#" role="button" @click="gotobuy(obj.id)">去购买</a>
-                </div>-->
-            </div>
 
+            </div>
+            
+            <div>
+              &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;     &nbsp;
+
+            </div>
+            
+            <div style="margin-left:110px;">
+              <el-pagination
+                background
+                layout="prev, pager, next"
+                :total="size">
+              </el-pagination>
+            </div>
+ 
 
           </div></el-col>
           <el-col :span="1"><div class="grid-content bg-purple">&nbsp;</div></el-col>
@@ -62,6 +64,7 @@
         list: [],
         msg: 'Welcome to Your Vue.js App',
         context: "",
+        size: 0,
       }
     },
     mounted(){
@@ -72,7 +75,7 @@
            *  查看所有商品信息 
            */
           async queryallGood(){
-              this.list = await synRequestPost("/getallgoodsinfo");
+              this.list = await synRequestPost("/admin/limitgood?start=0&end1=100");
               console.log(this.list);
           },
 
@@ -96,6 +99,7 @@
           async likeseach(){
             this.list = await synRequestPost("/shop/likeseach?contexr="+this.context);
           },
+
            /**
            *  前方登入页面
            */

@@ -3,16 +3,39 @@
         <div>
             <Top></Top>
         </div>
-        我的地址
-        <el-input
-        type="textarea"
-        :rows="2"
-        placeholder="请输入内容"
-        v-model="user.address">
-      </el-input>
-      我的密码
-      <el-input v-model="user.password" placeholder="请输入内容"></el-input>
-      <el-button type="primary" @click="submit">修改</el-button>
+
+        <el-row :gutter="20">
+          <el-col :span="2"><div class="grid-content bg-purple">&nbsp;</div></el-col>
+          <el-col :span="20"><div class="grid-content bg-purple">
+            &nbsp;
+              <br>
+              <div class="alert alert-primary" role="alert">
+                 我的个人信息需改
+              </div>
+              &nbsp;
+              <br>
+              我的账号
+              <el-input v-model="user.username" placeholder="请输入内容"   :disabled="true"></el-input>
+              &nbsp;
+              <br>
+              我的地址与联系方式
+              <el-input
+              type="textarea"
+              :rows="2"
+              placeholder="请输入内容"
+              v-model="user.address">
+            </el-input>
+            &nbsp;
+            <br>
+            我的密码
+            <el-input v-model="user.password" placeholder="请输入内容"></el-input>
+            &nbsp;
+            <br>
+            <el-button type="primary" style="width:100%" @click="submit">修改</el-button>
+          </div></el-col>
+          <el-col :span="2"><div class="grid-content bg-purple">&nbsp;</div></el-col>
+        </el-row>
+ 
       
     </div>
   </template>
@@ -74,4 +97,7 @@
 .el-carousel__item:nth-child(2n+1) {
   background-color: #d3dce6;
 }
+</style>
+<style scoped>
+@import '../../../static/bootcss/css/bootstrap.min.css'
 </style>

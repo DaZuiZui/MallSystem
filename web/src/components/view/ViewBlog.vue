@@ -4,19 +4,34 @@
             <Top></Top>
         </div>
 
-        <div class="alert alert-primary" role="alert">
-            论坛信息
-        </div>
+        <br>
+        <el-row :gutter="20">
+          <el-col :span="2"><div class="grid-content bg-purple">&nbsp;</div></el-col>
+          <el-col :span="20"><div class="grid-content bg-purple">
+            <div class="alert alert-primary" role="alert">
+              论坛信息
+          </div>
+  
+          <div>
+              <div class="jumbotron"   >
+                  <h1 class="display-4">{{obj.tiitle}}</h1>
+                  <p class="lead"> 
+                  </p>
+                  <hr class="my-4">
+                   {{obj.context}}
+              </div>
+          </div>
+          
+          操作:
+            <button type="button" class="btn btn-danger" @click="alertwindows('举报成功，多次举报无效')">举报</button>
+            <button type="button" class="btn btn-warning" @click="alertwindows('赞同成功，多次赞同无效')" >支持</button>
+            <button type="button" class="btn btn-info" @click="alertwindows('已经了解您的喜欢偏好')">不喜欢</button>
+          </div></el-col>
+          <el-col :span="2"><div class="grid-content bg-purple">&nbsp;</div></el-col>
+        </el-row>
 
-        <div>
-            <div class="jumbotron"   >
-                <h1 class="display-4">{{obj.tiitle}}</h1>
-                <p class="lead"> 
-                </p>
-                <hr class="my-4">
-                 {{obj.context}}
-            </div>
-        </div>
+ 
+ 
     </div>
   </template>
   
@@ -53,6 +68,10 @@
              await synRequestPost("/buygood?goodid="+id+"&userid="+getCookie("id"));
              alert("购买完事");
              this.queryallGood();
+          },
+
+          alertwindows(title){
+              alert(title);
           }
     }
   }
